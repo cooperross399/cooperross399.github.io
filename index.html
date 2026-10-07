@@ -48,8 +48,8 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
     </a>
     <nav aria-label="Site"><a href="about.html">About</a><a href="https://x.com/mavhightower">@mavhightower</a></nav>
   </header>
-  <h1>Three boards.<br>Updated daily.</h1>
-  <p class="lede">Model projections for NHL, Premier League and college basketball. Each board is frozen when it goes up and graded against the finals the next morning. <a href="about.html" style="text-decoration:underline;text-underline-offset:3px">How it works</a></p>
+  <h1>Three models.<br>Updated daily.</h1>
+  <p class="lede">Model projections for NHL, EPL, and NCAAM. Gamble Responsibly. <a href="about.html" style="text-decoration:underline;text-underline-offset:3px">How it works</a></p>
   <nav class="boards" id="boards" aria-label="Boards">
     <a class="board" href="https://nhl.maverickhightower.com/" data-sport="nhl"><span class="name">NHL</span><span class="head">Loading tonight's board…</span><span class="sub"></span><span class="meta"></span></a>
     <a class="board" href="https://epl.maverickhightower.com/" data-sport="epl"><span class="name">EPL</span><span class="head">Loading this week's board…</span><span class="sub"></span><span class="meta"></span></a>
@@ -68,7 +68,8 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
     const line = hubLine(k, board, results);
     a.querySelector(".head").textContent = line.headline;
     a.setAttribute("aria-label", `${s.name} board: ${line.headline}`);
-    a.querySelector(".sub").textContent = line.detail || "";
+    // Only a settled record, never the results notice ("nothing to settle", "no final was available").
+    a.querySelector(".sub").textContent = results && results.games && results.games.length ? line.detail || "" : "";
     const meta = a.querySelector(".meta");
     meta.innerHTML = "";
     if (line.updated) meta.append(Object.assign(document.createElement("span"), { textContent: `Updated ${line.updated}` }));
