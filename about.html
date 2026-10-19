@@ -93,19 +93,19 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
     <section class="block" id="picks">
       <h2>How picks are chosen</h2>
       <div class="body">
-        <p><strong>Edge</strong> is the model's probability minus what the best market price implies, after calibrating against past results. Most edges are small. A lot of small edges are noise.</p>
-        <p>A <strong>best bet</strong> has to clear three bars: a minimum edge, a minimum price, and a market I've approved for selection. It gets a tier and a stake in units. A unit is a fixed slice of a notional bankroll. Dollar figures aren't shown.</p>
-        <p>A <strong>lean</strong> is the model's side on a game that didn't clear the bars. It's written down so it can be checked later. It isn't staked and doesn't count in the record.</p>
-        <p><strong>No play</strong> means no price reached the build, or nothing cleared. Once a game starts, the pick stays up for the record but it's no longer a play.</p>
+        <p><strong>Edge</strong> is how much more likely the model thinks something is than the betting odds say. A 5% edge means the model gives it 5 points more chance than the odds do. Most edges are small, and small ones are often just noise.</p>
+        <p>A <strong>best bet</strong> has to pass three checks: a big enough edge, good enough odds, and a bet type I've opened for picks. It gets a grade (A or B) and a size in units. A unit is a fixed, made-up amount used to keep score.</p>
+        <p>A <strong>lean</strong> is the side the model prefers when it didn't pass the checks. It's tracked so it can be checked later, but it isn't a bet and doesn't count in the record.</p>
+        <p><strong>No play</strong> means no odds were posted, or nothing was worth a bet. Once a game starts, its pick stays up for the record but it's no longer live.</p>
       </div>
     </section>
 
     <section class="block" id="grading">
       <h2>How results are graded</h2>
       <div class="body">
-        <p>The first board published each day is the day's opinion. Results grades that frozen copy against the finals. Nothing gets recomputed afterwards. A bad board stays bad in the Archive.</p>
-        <p>Straight up: did the projected winner win. Totals: was the projected total on the right side of the market's line. The picks record is best bets only, at the published price.</p>
-        <p>The season's return on best bets is <strong>sealed</strong> until a date I set before the season started. A running total on the front page every morning turns a season-long test into a scoreboard, and I don't want to be tempted to touch the model because of a bad week. Until then the boards show how many bets have settled, not how they're doing.</p>
+        <p>The first board posted each day is that day's call. Results grades that saved copy against the final scores. Nothing is changed afterwards, so a bad board stays bad in the Archive.</p>
+        <p>Straight up: did the team the model picked to win actually win. Totals: did the game go over or under the line the way the model said. The picks record counts best bets only, at the odds shown.</p>
+        <p>The season's profit on best bets stays <strong>hidden</strong> until a date I picked before the season started. A running total every morning would tempt me to tinker with the model after a bad week. Until then the boards show how many bets have been graded, not how they're doing.</p>
       </div>
     </section>
 
@@ -115,13 +115,13 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
         <dl>
           <div><dt>Projected</dt><dd>The model's expected score before the game. Not a prediction of the exact final.</dd></div>
           <div><dt>Win %</dt><dd>The model's win probability. The thin bar under each game is the same split in team colours.</dd></div>
-          <div><dt>Open / Current</dt><dd>The market price when the board was first built, and at the last refresh. The small line under a cell is the movement.</dd></div>
-          <div><dt>Fair</dt><dd>The model's break-even price. A market price better than fair is where the edge is.</dd></div>
-          <div><dt>Edge</dt><dd>Model probability minus market-implied probability, after calibration, in percentage points.</dd></div>
-          <div><dt>Best bet</dt><dd>Cleared every bar. Shown on black with a tier and a stake in units.</dd></div>
-          <div><dt>Lean</dt><dd>The model's side, recorded but not staked. Shown with a dashed border.</dd></div>
-          <div><dt>Record</dt><dd>Settled from the frozen boards only. Intervals are 95% confidence. "No demonstrated edge" means zero is inside the interval.</dd></div>
-          <div><dt>Feed stale</dt><dd>The board hasn't rebuilt in over 30 hours. Don't read it as tonight.</dd></div>
+          <div><dt>Open / Current</dt><dd>The odds when the board was first posted, and the latest odds. The small line under them shows how they moved.</dd></div>
+          <div><dt>Fair</dt><dd>What the odds would be if the model were exactly right. If the real odds pay more than fair, that's an edge.</dd></div>
+          <div><dt>Edge</dt><dd>How much more likely the model thinks it is than the odds say, in percentage points.</dd></div>
+          <div><dt>Best bet</dt><dd>Passed every check. Shown on black with a grade and a size in units.</dd></div>
+          <div><dt>Lean</dt><dd>The model's side, tracked but not bet. Shown with a dashed border.</dd></div>
+          <div><dt>Record</dt><dd>Graded only from the boards as they were posted. A "likely range" is where the true result probably sits; if it runs from a loss to a profit, it's too early to tell.</dd></div>
+          <div><dt>Feed stale</dt><dd>The board hasn't updated in over 30 hours, so it may not be tonight's.</dd></div>
           <div><dt>B2B</dt><dd>The team played the previous night.</dd></div>
         </dl>
       </div>
@@ -131,7 +131,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
       <h2>What it is not</h2>
       <div class="body">
         <p>This is a public record of a model. It isn't betting advice and nothing here is a recommendation to bet. The model doesn't place bets and neither do I on its behalf. The units are bookkeeping so the record can be graded.</p>
-        <p>Nothing on these boards is a proven edge. Telling a real edge from luck takes thousands of settled bets, and the boards show how far along that count is. A good week proves nothing. Neither does a bad one.</p>
+        <p>Nothing here is proven to win. Telling skill from luck takes thousands of graded bets, and the boards show how far along that count is. A good week proves nothing. Neither does a bad one.</p>
         <p>If you bet, bet what you can afford to lose, where it's legal, and only if you're of age. If it's stopped being fun, help is free and confidential. US: call or text <a href="tel:1-800-522-4700">1-800-GAMBLER</a>. UK: <a href="https://www.gamcare.org.uk/">GamCare</a>, 0808 8020 133. Canada: <a href="https://www.connexontario.ca/">ConnexOntario</a>, 1-866-531-2600.</p>
       </div>
     </section>
