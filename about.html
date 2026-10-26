@@ -81,9 +81,10 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
       <div class="body">
         <p>Each model is fit on regular-season results. It estimates expected goals or points for both sides, then works out the odds of each outcome on the board: winner, margin, over or under.</p>
         <p>Those odds get converted to a <strong>fair price</strong>, the line where a bet would break even if the model were right. The board puts fair next to the market's open and current prices. Where they differ is the whole point.</p>
+        <p>The NHL model is written up step by step, with its live team ratings and a changelog, at <a href="https://nhl.maverickhightower.com/Methods.dc.html" style="text-decoration:underline;text-underline-offset:3px">NHL Methods</a>. Every NHL game card links to a game page with our call in plain words and the main reasons behind it. How those numbers have held up is on <a href="https://nhl.maverickhightower.com/Record.dc.html" style="text-decoration:underline;text-underline-offset:3px">Track record</a>.</p>
         <h3>By sport</h3>
         <div class="sports">
-          <a href="https://nhl.maverickhightower.com/"><span class="n">NHL</span><span class="d">Team strength model with a rest adjustment for back-to-backs. Moneyline, puck line, total, regulation three-way.</span><span class="m">Daily in season · 9:30am New York</span></a>
+          <a href="https://nhl.maverickhightower.com/"><span class="n">NHL</span><span class="d">Shooter-adjusted expected goals, goalies, tonight's lineup, rest and referees. Moneyline, puck line, total, regulation three-way.</span><span class="m">Daily in season · refreshed through the afternoon</span></a>
           <a href="https://epl.maverickhightower.com/"><span class="n">EPL</span><span class="d">Poisson goals model. Total 2.5, both teams to score, draw no bet. Match result is on the board for reference but never picked.</span><span class="m">Each matchweek window</span></a>
           <a href="https://cbb.maverickhightower.com/"><span class="n">CBB</span><span class="d">Team rating model for the games on the card. Moneyline, spread, total.</span><span class="m">Morning and evening cards</span></a>
         </div>
@@ -96,7 +97,8 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
         <p><strong>Edge</strong> is how much more likely the model thinks something is than the betting odds say. A 5% edge means the model gives it 5 points more chance than the odds do. Most edges are small, and small ones are often just noise.</p>
         <p>A <strong>best bet</strong> has to pass three checks: a big enough edge, good enough odds, and a bet type I've opened for picks. It gets a grade (A or B) and a size in units. A unit is a fixed, made-up amount used to keep score.</p>
         <p>A <strong>lean</strong> is the side the model prefers when it didn't pass the checks. It's tracked so it can be checked later, but it isn't a bet and doesn't count in the record.</p>
-        <p><strong>No play</strong> means no odds were posted, or nothing was worth a bet. Once a game starts, its pick stays up for the record but it's no longer live.</p>
+        <p><strong>No play</strong> means nothing was worth a bet. <strong>Not priced</strong> means no odds reached the board, so nothing was judged. Once a game starts, its pick stays up for the record but it's no longer live.</p>
+        <p>The exact bars, and how a best bet differs from a lean, are in <a href="https://nhl.maverickhightower.com/Methods.dc.html#bet-lean" style="text-decoration:underline;text-underline-offset:3px">Methods</a>.</p>
       </div>
     </section>
 
@@ -121,6 +123,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
           <div><dt>Best bet</dt><dd>Passed every check. Shown on black with a grade and a size in units.</dd></div>
           <div><dt>Lean</dt><dd>The model's side, tracked but not bet. Shown with a dashed border.</dd></div>
           <div><dt>Record</dt><dd>Graded only from the boards as they were posted. A "likely range" is where the true result probably sits; if it runs from a loss to a profit, it's too early to tell.</dd></div>
+          <div><dt>Where the number comes from</dt><dd>On NHL cards, a link to the game page: our call, the main reasons, the goalies and the odds.</dd></div>
           <div><dt>Feed stale</dt><dd>The board hasn't updated in over 30 hours, so it may not be tonight's.</dd></div>
           <div><dt>B2B</dt><dd>The team played the previous night.</dd></div>
         </dl>
@@ -139,7 +142,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
 
   <footer>
     <span>© 2026 Maverick Hightower</span>
-    <span style="display:flex;gap:0 20px;flex-wrap:wrap"><a href="https://maverickhightower.com/">Boards</a><a href="https://x.com/mavhightower">@mavhightower</a></span>
+    <span style="display:flex;gap:0 20px;flex-wrap:wrap"><a href="https://maverickhightower.com/">Boards</a><a href="https://nhl.maverickhightower.com/Methods.dc.html">NHL Methods</a><a href="https://nhl.maverickhightower.com/Record.dc.html">Track record</a><a href="https://x.com/mavhightower">@mavhightower</a></span>
   </footer>
 </div>
 </body></html>
