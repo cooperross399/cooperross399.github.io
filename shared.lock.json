@@ -1,12 +1,12 @@
 {
  "repo": "cooperross399/betting-lab-shared",
- "tag": "v4",
+ "tag": "v6",
  "source": {
   "lib/sports.js": "web/lib/sports.js",
   "lib/format.js": "web/lib/format.js"
  },
  "files": {
-  "lib/sports.js": "a104039b97bf1cc6f3b4049a682872b68a458583bc008d001e8f1fae46b6088b",
+  "lib/sports.js": "a6b63938b5307f1b5a674cd51a7a5432a8faa9bda3bb09bdfd74eaad5f095d4c",
   "lib/format.js": "179f294bc78370d06487f6b2d5fd93e30e198208c4a6c6ce51fb97208975576a"
  }
 }
