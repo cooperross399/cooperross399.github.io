@@ -64,7 +64,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
   for (const a of document.querySelectorAll("[data-sport]")) {
     const k = a.dataset.sport, s = SPORTS[k];
     const base = local ? s.sample.replace(/board\.json$/, "") : `${s.host}data/`;
-    const [board, results] = await Promise.all([get(`${base}board.json`), get(`${base}results.json`)]);
+    const [board, results, record] = await Promise.all([get(`${base}board.json`), get(`${base}results.json`), k === "nhl" ? get(`${base}record.json`) : null]);
     const line = hubLine(k, board, results);
     a.querySelector(".head").textContent = line.headline;
     a.setAttribute("aria-label", `${s.name} board: ${line.headline}`);
@@ -75,8 +75,16 @@ footer a{display:inline-flex;align-items:center;min-height:44px}
     if (line.updated) meta.append(Object.assign(document.createElement("span"), { textContent: `Updated ${line.updated}` }));
     if (line.stale) meta.append(Object.assign(document.createElement("span"), { className: "stale", textContent: board ? "Feed stale" : "Feed down" }));
     const links = document.createElement("span"); links.className = "links";
-    for (const [t, p] of [["Results", "Results.dc.html"], ["Archive", "Archive.dc.html"]]) { const l = document.createElement("a"); l.href = `${s.host}${p}`; l.textContent = t; links.append(l); }
+    const extra = k === "nhl" ? [["Record", "Record.dc.html"], ["Methods", "Methods.dc.html"]] : [];
+    for (const [t, p] of [["Results", "Results.dc.html"], ...extra, ["Archive", "Archive.dc.html"]]) { const l = document.createElement("a"); l.href = `${s.host}${p}`; l.textContent = t; links.append(l); }
     meta.append(links);
+    // NHL: one calibration line from record.json, the largest bucket said plainly. Nothing about return.
+    const bk = record && Array.isArray(record.buckets) ? record.buckets.filter((b) => b.games > 0).sort((x, y) => y.games - x.games)[0] : null;
+    if (bk && record.nights > 0) {
+      const pct = (p) => `${Math.round(p * 100)}%`, rec = document.createElement("span");
+      rec.textContent = `Favourites rated ${pct(bk.low)}–${bk.high >= 1 ? "100%" : pct(bk.high)} have won ${pct(bk.actual)} · ${record.nights} nights`;
+      meta.insertBefore(rec, links);
+    }
   }
 </script>
 </body></html>
