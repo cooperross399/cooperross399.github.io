@@ -1,0 +1,45 @@
+name: Shared files
+
+# lib/sports.js and lib/format.js are the files the NHL, EPL and CBB boards
+# serve, from cooperross399/betting-lab-shared at the tag shared.lock.json
+# pins. This checks that the hub's copies are that tag's bytes, so the hub
+# cannot drift from the boards silently. It reads, builds and publishes
+# nothing else.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Shared files match the pinned tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare with the pinned tag
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, pathlib, subprocess, sys, tempfile
+          lock = json.loads(pathlib.Path("shared.lock.json").read_text())
+          bad = []
+          for name, want in lock["files"].items():
+              if hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest() != want:
+                  bad.append(f"{name}: differs from shared.lock.json")
+          tmp = tempfile.mkdtemp()
+          url = f"https://github.com/{lock['repo']}.git"
+          if subprocess.run(["git", "clone", "--quiet", "--depth", "1", "--branch", lock["tag"], url, tmp]).returncode:
+              print(f"::warning::{lock['repo']}@{lock['tag']} could not be cloned; checked the copies against the lock only.")
+          else:
+              for name, want in lock["files"].items():
+                  src = pathlib.Path(tmp) / lock["source"][name]
+                  if not src.is_file() or hashlib.sha256(src.read_bytes()).hexdigest() != want:
+                      bad.append(f"{name}: {lock['tag']} differs from shared.lock.json")
+          for line in bad:
+              print(f"::error::{line}")
+          sys.exit(1 if bad else 0)
+          PY
